@@ -8,14 +8,16 @@ import { HomeComponent } from '@pages/home/home.component';
 import { AdImageComponent } from '@components/ad-image/ad-image.component';
 import { AdVideoComponent } from '@components/ad-video/ad-video.component';
 import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '../material-module/material.module'
+import { MaterialModule } from '../material-module/material.module';
+import { TestComponent } from './components/test/test.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AdImageComponent,
-    AdVideoComponent
+    AdVideoComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

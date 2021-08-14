@@ -22,20 +22,44 @@
 
     </div>
     <div>
+
     <mat-list>
       <mat-list-item *ngFor="let add of adList">
-        <mat-icon matListIcon>{{add.type == "IMAGE" ? "image": "smart_display"}}</mat-icon>
+
+        <div>
+          {{add|json}}
+  
+        </div>
+
+        <!-- <mat-icon matListIcon>{{add.type == "IMAGE" ? "image": "smart_display"}}</mat-icon>
         <h3 matLine> {{add.creative.name}} </h3>
         <p matLine>
           <span> {{add.creative.name}} </span>
-        </p>
+        </p> -->
       </mat-list-item>
     </mat-list>
   </div>
   </div>
   <div #main class="main">
     <div class="map-container">
-      <ng-template #viewContainerRef class="add-template"></ng-template>
+
+  
+
+     <!-- <ng-template #viewContainerRef class="add-template"></ng-template>  -->
+      <div *ngFor="let add of adList">
+     
+        <app-test [ad-object]="add"></app-test>
+      <!-- <ng-container *ngIf="add.type==='IMAGE'">
+        <app-ad-image [ad-object]="add"></app-ad-image>
+      </ng-container>
+    
+    
+      <ng-container *ngIf="add.type==='VIDEO'">
+        <app-ad-video [ad-object]="add"></app-ad-video>
+      </ng-container> -->
+    
+
+      </div>
     </div>
   </div>
 </div>

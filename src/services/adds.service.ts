@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone, } from '@angular/core';
 import { adDispatcher, IAdEvent } from 'ubimo-ad-dispatcher';
 import { Observable } from 'ubimo-ad-dispatcher/node_modules/rxjs';
 import * as moment from 'moment';
@@ -8,12 +8,27 @@ import * as moment from 'moment';
 })
 export class AddsService {
   public adDispatcher$: Observable<IAdEvent> = adDispatcher.adEvents$;
-  constructor() {}
 
-  startListeningToEvents() {
-    adDispatcher.adEvents$.subscribe((ad) => {
-      console.log(ad);
+
+  constructor(private ngZone:NgZone) {}
+
+  startListeningToEvents(cb: (adEvent: IAdEvent) => void) {
+
+    let i=0;
+
+    let disposer = adDispatcher.registerToAdEvents(ad=>{
+
+      this.ngZone.run(()=>{
+        cb(ad);
+      })
     });
+
+    //disposer.removeListener();
+
+    // adDispatcher.adEvents$.subscribe((ad) => {
+
+    //   console.log(ad);
+    // });
   }
 
   getFilterdList(): Observable<IAdEvent> {

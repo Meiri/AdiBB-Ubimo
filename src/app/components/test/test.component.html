@@ -1,0 +1,17 @@
+<!-- <p>test works! {{progress}}</p>
+<mat-progress-bar mode="determinate" [value]= "progress"></mat-progress-bar> -->
+
+
+<div class="video-container" [ngStyle]="{'top.%': positionY , 'left.%': positionX}">
+
+    <video *ngIf="adObject.type==='VIDEO'" preload="true" width="100px" height="100px" autoplay [volume]="0">
+      <source src={{adObject.creative.url}} type="video/mp4">
+    </video>
+    
+    <img *ngIf="adObject.type==='IMAGE'" src={{adObject.creative.url}} alt="image">
+
+    <mat-progress-bar mode="determinate" [value]= "progress"></mat-progress-bar>
+    <div>
+      {{progress}}
+    </div>
+  </div>
