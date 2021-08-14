@@ -48,7 +48,7 @@
      <!-- <ng-template #viewContainerRef class="add-template"></ng-template>  -->
       <div *ngFor="let add of adList">
      
-        <app-test [ad-object]="add"></app-test>
+        <app-test *ngIf="add.isActive"  [ad-object]="add"></app-test>
       <!-- <ng-container *ngIf="add.type==='IMAGE'">
         <app-ad-image [ad-object]="add"></app-ad-image>
       </ng-container>

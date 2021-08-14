@@ -82,15 +82,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
         extende.time = this.addService.convertDateToTimestamp(new Date());
 
-
+        extende.isActive = true;
 
         
         this.adList.push(extende);
         let index = this.adList.length-1;
 
-        // setTimeout(()=>{
-        //   this.adList.splice(this.adList.indexOf(extende),1);
-        // } ,5000);
+        setTimeout(()=>{
+          extende.isActive=false;
+          //this.adList.splice(this.adList.indexOf(extende),1);
+        } ,5000);
       })
     });
 
